@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Agregar Empleado</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="empleadoForm" (ngSubmit)="onFormSubmit()">
+    <ion-list>
+
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input formControlName="emp_nombre" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Sucursal</ion-label>
+        <ion-input formControlName="emp_sucursal" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Supervisor</ion-label>
+        <ion-input formControlName="emp_supervisor" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Cargo</ion-label>
+        <ion-input formControlName="emp_cargo" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Sueldo</ion-label>
+        <ion-input type="number" formControlName="emp_sueldo" required></ion-input>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label position="stacked">Subir imagen</ion-label>
+        <ion-button expand="block" color="primary" (click)="fileInput.click()">
+          <ion-icon slot="start" name="cloud-upload-outline"></ion-icon>
+          Seleccionar imagen
+        </ion-button>
+        <input 
+          type="file" 
+          #fileInput 
+          (change)="onFileSelected($event)" 
+          accept="image/*" 
+          hidden 
+          required />
+      </ion-item>
+      
+      <!-- Elemento para mostrar la vista previa de la imagen -->
+      <ion-item *ngIf="imagePreviewUrl" lines="none">
+        <ion-label position="stacked">Vista previa:</ion-label>
+        <ion-thumbnail slot="start" (click)="openImageModal()">
+          <img [src]="imagePreviewUrl" alt="Vista previa de la imagen" />
+        </ion-thumbnail>
+      </ion-item>
+      
+
+    </ion-list>
+
+    <ion-button expand="full" type="submit">Agregar Empleado</ion-button>
+  </form>
+</ion-content>

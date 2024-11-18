@@ -1,0 +1,19 @@
+.image-preview {
+    margin-bottom: 10px;
+    display: flex;            // Habilita flexbox
+    justify-content: center;  // Centra horizontalmente
+    align-items: center;      // Centra verticalmente (si es necesario)
+    img {
+      max-width: 100%; // Ajusta la imagen al tamaño del contenedor
+      border-radius: 8px; // Esquinas redondeadas
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); // Sombra suave
+    }
+  }
+  
+  .image-input {
+    // Estilos personalizados para el input de la imagen
+    border: 1px solid #ccc; // Borde suave
+    border-radius: 4px; // Esquinas redondeadas
+    padding: 10px; // Espaciado interno
+  }
+  

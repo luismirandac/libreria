@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Editar Empleado</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Editar Empleado</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Campo de búsqueda -->
+  <ion-item>
+    <ion-label position="stacked">Buscar Empleado</ion-label>
+    <ion-input [(ngModel)]="searchTerm" (ionInput)="searchEmpleados()" placeholder="Escribe el nombre del empleado"></ion-input>
+  </ion-item>
+
+  <!-- Lista de empleados filtrados -->
+  <ion-list *ngIf="filteredEmpleados.length > 0">
+    <ion-item *ngFor="let empleado of filteredEmpleados" (click)="selectEmpleado(empleado)">
+      {{ empleado.nombre }}
+    </ion-item>
+  </ion-list>
+
+  <!-- Formulario para editar el empleado -->
+  <ion-list *ngIf="selectedEmpleado">
+    <!-- Mostrar la fotografía del empleado -->
+    <ion-item *ngIf="selectedEmpleado.imagen">
+      <img [src]="selectedEmpleado.imagen" alt="Fotografía de {{ selectedEmpleado.nombre }}" style="width: 100px; height: auto;" />
+    </ion-item>
+
+    <!-- Botón para cambiar la fotografía -->
+    <ion-item>
+      <ion-label position="stacked">Cambiar Fotografía</ion-label>
+      <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Id</ion-label>
+      <ion-input [type]="showId ? 'text' : 'password'" [(ngModel)]="selectedEmpleado.id" placeholder="Id del empleado" disabled></ion-input>
+      <ion-button fill="clear" slot="end" (click)="toggleShowId()">
+        <ion-icon [name]="showId ? 'eye' : 'eye-off'"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Nombre del empleado</ion-label>
+      <ion-input [(ngModel)]="selectedEmpleado.nombre" placeholder="Nombre del empleado"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Sucursal</ion-label>
+      <ion-input [(ngModel)]="selectedEmpleado.sucursal" placeholder="Sucursal en la que se encuentra trabajando"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Supervisor</ion-label>
+      <ion-input [(ngModel)]="selectedEmpleado.supervisor" placeholder="Supervisor del empleado"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Cargo</ion-label>
+      <ion-input [(ngModel)]="selectedEmpleado.cargo" placeholder="Cargo del empleado"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Sueldo</ion-label>
+      <ion-input type="number" [(ngModel)]="selectedEmpleado.sueldo" placeholder="Sueldo del empleado"></ion-input>
+    </ion-item>
+
+    <ion-button expand="full" (click)="saveEmpleado()">Guardar Cambios</ion-button>
+    <ion-button expand="full" color="danger" (click)="deleteEmpleado()">Eliminar</ion-button> <!-- Botón para eliminar -->
+  </ion-list>
+</ion-content>

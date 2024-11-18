@@ -1,0 +1,164 @@
+ion-menu ion-content {
+  --background: var(--ion-item-background, var(--ion-background-color, #f2e575));//inbox
+}
+
+ion-menu.md ion-content {
+  --padding-start: 8px;
+  --padding-end: 8px;
+  --padding-top: 20px;
+  --padding-bottom: 20px;
+}
+
+ion-menu.md ion-list {
+  padding: 20px 0;
+}
+
+ion-menu.md ion-note {
+  margin-bottom: 30px;
+}
+
+ion-menu.md ion-list-header,
+ion-menu.md ion-note {
+  padding-left: 10px;
+}
+
+ion-menu.md ion-list#inbox-list {
+  border-bottom: 1px solid var(--ion-background-color-step-150, #33ff00);//linea arriba delabels
+}
+
+ion-menu.md ion-list#inbox-list ion-list-header {
+  font-size: 22px;
+  font-weight: 600;
+
+  min-height: 20px;
+}
+
+ion-menu.md ion-list#labels-list ion-list-header {
+  font-size: 16px;
+
+  margin-bottom: 18px;
+
+  color: #f700ff;//palabra labels
+
+  min-height: 26px;
+}
+
+ion-menu.md ion-item {
+  --padding-start: 10px;
+  --padding-end: 10px;
+  border-radius: 4px;
+}
+
+ion-menu.md ion-item.selected {
+  --background: rgba(var(--ion-color-primary-rgb), 0.14);
+}
+
+ion-menu.md ion-item.selected ion-icon {
+  color: var(--ion-color-primary);
+}
+
+ion-menu.md ion-item ion-icon {
+  color: #00f2ff;//color de iconos
+}
+
+ion-menu.md ion-item ion-label {
+  font-weight: 500;
+}
+
+ion-menu.ios ion-content {
+  --padding-bottom: 20px;
+}
+
+ion-menu.ios ion-list {
+  padding: 20px 0 0 0;
+}
+
+ion-menu.ios ion-note {
+  line-height: 24px;
+  margin-bottom: 20px;
+}
+
+ion-menu.ios ion-item {
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --min-height: 50px;
+}
+
+ion-menu.ios ion-item.selected ion-icon {
+  color: var(--ion-color-primary);
+}
+
+ion-menu.ios ion-item ion-icon {
+  font-size: 24px;
+  color: #d9ff00;//nose
+}
+
+ion-menu.ios ion-list#labels-list ion-list-header {
+  margin-bottom: 8px;
+}
+
+ion-menu.ios ion-list-header,
+ion-menu.ios ion-note {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+ion-menu.ios ion-note {
+  margin-bottom: 8px;
+}
+
+ion-note {
+  display: inline-block;
+  font-size: 16px;
+
+  color: var(--ion-color-medium-shade);
+}
+
+ion-item.selected {
+  --color: var(--ion-color-primary);
+}
+ion-fab {
+  margin: 20px;
+  ion-fab-button {
+    --background: #ff4d4d; /* Color del botón */
+  }
+  ion-icon {
+    font-size: 20px;
+  }
+}
+/* src/global.scss o src/theme/variables.scss */
+
+/* Estilos para texto grande */
+.texto-grande {
+  font-size: 1.5em; /* Ajusta según sea necesario */
+}
+
+/* Estilos para alto contraste */
+.alto-contraste {
+  background-color: black; /* Fondo oscuro */
+  color: white; /* Texto blanco */
+}
+
+/* Asegúrate de que todos los elementos sean visibles y legibles */
+.texto-grande * {
+  font-size: inherit; /* Hereda el tamaño del texto */
+}
+
+.alto-contraste * {
+  color: inherit; /* Hereda el color del texto */
+}
+body.modo-oscuro {
+  background-color: #121212; // Color de fondo oscuro
+  color: #ffffff; // Color de texto claro
+}
+
+body.modo-oscuro .ion-toolbar {
+  background-color: #1f1f1f; // Color de fondo de la barra de herramientas
+  color: #ffffff; // Color de texto de la barra de herramientas
+}
+
+body.modo-oscuro .ion-item {
+  background-color: #1f1f1f; // Color de fondo de los ítems
+  color: #ffffff; // Color de texto de los ítems
+}
+

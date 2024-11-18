@@ -1,0 +1,159 @@
+.image-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+  position: relative; /* Añadir para el círculo de calificación */
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.rating-circle {
+  position: absolute;
+  top: 16px; /* Ajustar la posición vertical */
+  right: 16px; /* Ajustar la posición horizontal */
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
+  border-radius: 50%; /* Círculo perfecto */
+  width: 40px; /* Tamaño del círculo */
+  height: 40px; /* Tamaño del círculo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px; /* Tamaño de la fuente */
+  font-weight: bold; /* Negrita */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra para profundidad */
+}
+
+ion-card {
+  margin: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resena-container {
+  background-color: #f9f9f9; /* Color de fondo claro */
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 16px; /* Espaciado interno */
+  margin-bottom: 16px; /* Espaciado entre reseñas */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  transition: transform 0.2s; /* Transición para efectos */
+}
+
+.resena-container:hover {
+  transform: scale(1.02); /* Efecto de aumento al pasar el mouse */
+}
+
+.estrellas {
+  display: flex;
+  align-items: center;
+  margin-top: 8px; /* Espaciado arriba */
+}
+
+/* Estilos para las estrellas */
+.estrellas ion-icon {
+  cursor: pointer;
+  font-size: 32px; /* Aumentar tamaño de las estrellas */
+  transition: transform 0.2s; /* Efecto de transición */
+}
+
+.estrellas ion-icon:hover {
+  transform: scale(1.2); /* Aumentar tamaño al pasar el mouse */
+  color: gold; /* Cambiar color al pasar el mouse */
+}
+
+.acciones {
+  display: flex;
+  justify-content: flex-end; /* Alinear botones a la derecha */
+  margin-top: 8px; /* Espaciado arriba */
+}
+
+ion-button {
+  font-size: 14px; /* Tamaño de fuente más pequeño */
+}
+.image-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+  position: relative;
+  cursor: pointer; /* Indica que es interactivo */
+}
+
+.image-wrapper {
+  position: relative;
+  transition: transform 0.5s;
+}
+
+.image-wrapper.flip {
+  transform: rotateY(180deg); /* Rota la imagen 180 grados */
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: opacity 0.5s;
+}
+
+.qr-code {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  padding: 20px;
+}.image-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.qr-code {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.8; /* Ajusta la opacidad si es necesario */
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s;
+}
+
+.image-wrapper.flip img {
+  transform: rotateY(180deg); /* Gira la imagen al hacer click */
+}
+
+.rating-circle {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}

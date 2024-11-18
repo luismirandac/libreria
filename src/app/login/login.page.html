@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title> Iniciar sesión </ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (submit)="onSubmit()">
+    <ion-item>
+      <ion-label position="floating">Correo electrónico</ion-label>
+      <ion-input type="email" [(ngModel)]="email" name="email" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="password" name="password" required></ion-input>
+    </ion-item>
+
+    <!-- Mensaje de seguridad visible solo si el usuario está autenticado -->
+    <ion-text color="medium" *ngIf="isAuthenticated">
+      <p>* Por razones de seguridad, debes ingresar tu contraseña nuevamente.</p>
+    </ion-text>
+
+    <ion-button expand="block" type="submit">Iniciar sesión</ion-button>
+    <ion-button expand="block" fill="clear" routerLink="/registro/lucho2.0">Registrarse</ion-button>
+  </form>
+
+  <!-- Botón de iniciar sesión con Google, circular y debajo del botón de registrarse -->
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button color="secondary" (click)="googleSignIn()">
+      <ion-icon name="logo-google"></ion-icon> <!-- Logo de Google -->
+    </ion-fab-button>
+  </ion-fab>
+
+  <!-- Botón de Cerrar Sesión -->
+  <ion-button *ngIf="isAuthenticated" expand="block" color="danger" (click)="logout()">
+    Cerrar sesión
+  </ion-button>
+
+  <!-- Botón para abrir el modal de accesibilidad -->
+<ion-button class="accessibility-button" color="dark" (click)="openAccessibilityModal()">
+  <ion-icon name="settings"></ion-icon>
+</ion-button>
+  
+  
+</ion-content>

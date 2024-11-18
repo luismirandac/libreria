@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Editar Sucursal</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Campo de búsqueda -->
+  <ion-item>
+    <ion-label position="stacked">Buscar Sucursal</ion-label>
+    <ion-input [(ngModel)]="searchTerm" (ionInput)="searchSucursales()" placeholder="Escribe el nombre de la sucursal"></ion-input>
+  </ion-item>
+
+  <!-- Lista de productos filtrados -->
+  <ion-list *ngIf="filteredSucursales.length > 0">
+    <ion-item *ngFor="let sucursal of filteredSucursales" (click)="selectSucursal(sucursal)">
+      {{ sucursal.nombre }}
+    </ion-item>
+  </ion-list>
+
+  <!-- Formulario para editar el producto -->
+  <ion-list *ngIf="selectedSucursal">
+    <ion-item>
+      <ion-label position="stacked">Id</ion-label>
+      <ion-input [type]="showId ? 'text' : 'password'" [(ngModel)]="selectedSucursal.id" placeholder="Id de sucursal" disabled></ion-input>
+      <ion-button fill="clear" slot="end" (click)="toggleShowId()">
+        <ion-icon [name]="showId ? 'eye' : 'eye-off'"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Nombre</ion-label>
+      <ion-input [(ngModel)]="selectedSucursal.nombre" placeholder="Nombre de la sucursal"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Dirección</ion-label>
+      <ion-textarea [(ngModel)]="selectedSucursal.direccion" placeholder="Dirección"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Encargado</ion-label>
+      <ion-input [(ngModel)]="selectedSucursal.encargado" placeholder="Precio"></ion-input>
+    </ion-item>
+
+
+    <ion-button expand="full" (click)="saveSucursal()">Guardar Cambios</ion-button>
+    <ion-button expand="full" color="danger" (click)="deleteSucursal()">Eliminar</ion-button> <!-- Botón para eliminar -->
+  </ion-list>
+</ion-content>

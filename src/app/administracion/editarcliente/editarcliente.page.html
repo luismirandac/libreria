@@ -1,0 +1,17 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Editar empleados</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-button [routerLink]="['/empleado-add']" expand="block" color="primary" size="large">
+    Agregar empleado
+  </ion-button>
+  <ion-button [routerLink]="['/empleado-edit/modificar']" expand="block" color="primary" size="large">
+    Modificar/Eliminar empleados
+  </ion-button>
+</ion-header>

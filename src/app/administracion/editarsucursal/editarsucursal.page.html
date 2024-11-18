@@ -1,0 +1,17 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Editar sucursales</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-button [routerLink]="['/sucursal-add/sucursal']" expand="block" color="primary" size="large">
+    Agregar Sucursal
+  </ion-button>
+  <ion-button [routerLink]="['/sucursal-edit/modificarSucursal']" expand="block" color="primary" size="large">
+    Modificar/Eliminar sucursal
+  </ion-button>
+</ion-header>

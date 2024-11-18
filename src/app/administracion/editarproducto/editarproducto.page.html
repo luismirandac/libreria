@@ -1,0 +1,17 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Editar libros</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-button [routerLink]="['/product-add/add']" expand="block" color="primary" size="large">
+    Agregar Libro
+  </ion-button>
+  <ion-button [routerLink]="['/product-edit/modificar']" expand="block" color="primary" size="large">
+    Modificar/Eliminar libros
+  </ion-button>
+</ion-header>

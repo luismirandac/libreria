@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ selectedProduct ? 'Editar Libro: ' + selectedProduct.nombre : 'Editar Libro' }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- Campo de búsqueda -->
+  <ion-item>
+    <ion-label position="stacked">Buscar Libro</ion-label>
+    <ion-input [(ngModel)]="searchTerm" (ionInput)="searchProductos()" placeholder="Escribe el nombre del libro"></ion-input>
+  </ion-item>
+
+  <!-- Lista de productos filtrados -->
+  <ion-list *ngIf="filteredProductos.length > 0">
+    <ion-item *ngFor="let producto of filteredProductos" (click)="selectProduct(producto)">
+      {{ producto.nombre }}
+    </ion-item>
+  </ion-list>
+
+  <!-- Formulario para editar el producto -->
+  <ion-list *ngIf="selectedProduct">
+    <h2 class="centered-title">Detalles del libro</h2>
+    <ion-item>
+      <div class="image-preview">
+        <img [src]="selectedProduct.imagen || 'assets/img/default-image.png'" alt="Imagen del producto" />
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="selectedProduct.imagen" placeholder="URL de la imagen" class="image-input"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Id</ion-label>
+      <ion-input [type]="showId ? 'text' : 'password'" [(ngModel)]="selectedProduct.id" placeholder="Id del producto" disabled></ion-input>
+      <ion-button fill="clear" slot="end" (click)="toggleShowId()">
+        <ion-icon [name]="showId ? 'eye' : 'eye-off'"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Nombre</ion-label>
+      <ion-input [(ngModel)]="selectedProduct.nombre" placeholder="Nombre del producto" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Descripción</ion-label>
+      <ion-textarea [(ngModel)]="selectedProduct.descripcion" placeholder="Descripción" required class="description-textarea"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Genero</ion-label>
+      <ion-input [(ngModel)]="selectedProduct.categoria" placeholder="Genero del libro" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Precio</ion-label>
+      <ion-input [(ngModel)]="selectedProduct.precio" type="number" placeholder="Precio" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Cantidad</ion-label>
+      <ion-input [(ngModel)]="selectedProduct.cantidad" type="number" placeholder="Cantidad" required></ion-input>
+    </ion-item>
+
+    <ion-button expand="full" (click)="saveProduct()">Guardar Cambios</ion-button>
+    <ion-button expand="full" color="danger" (click)="deleteProduct()">Eliminar</ion-button> <!-- Botón para eliminar -->
+  </ion-list>
+</ion-content>

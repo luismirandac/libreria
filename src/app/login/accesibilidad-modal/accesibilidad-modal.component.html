@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Ajustes de Accesibilidad</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Texto Grande</ion-label>
+    <ion-toggle [(ngModel)]="textoGrande"></ion-toggle>
+  </ion-item>
+  <ion-button expand="full" (click)="applyAccessibilitySettings()">Aplicar</ion-button>
+</ion-content>

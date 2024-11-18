@@ -1,0 +1,53 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Hace que el contenedor tome el 100% de la altura de la pantalla */
+  padding: 20px; /* Espaciado alrededor del contenedor */
+  box-sizing: border-box; /* Incluye padding en el cálculo del ancho/alto */
+}
+
+.login-logo {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 20px;
+}
+
+.login-title {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.login-item {
+  width: 100%;
+  max-width: 400px; /* Limita el ancho máximo de los elementos de formulario */
+  margin-bottom: 15px;
+}
+
+ion-button {
+  width: 100%;
+  max-width: 400px;
+  margin-top: 20px;
+}
+
+ion-text p {
+  text-align: center;
+}
+ion-fab-button {
+  width: 56px; /* Tamaño del botón */
+  height: 56px; /* Tamaño del botón */
+  border-radius: 50%; /* Hace que el botón sea circular */
+}
+.accessibility-button {
+  width: 50px; /* Ajusta el ancho según sea necesario */
+  height: 50px; /* Ajusta la altura según sea necesario */
+  border-radius: 50%; /* Hace el botón circular */
+  box-shadow: 0 2px 4px rgb(255, 255, 255); /* Sombra opcional */
+  position: fixed; /* Opcional: Posición fija */
+  bottom: 20px; /* Ajusta según sea necesario */
+  right: 20px; /* Ajusta según sea necesario */
+  z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
+}
+
+

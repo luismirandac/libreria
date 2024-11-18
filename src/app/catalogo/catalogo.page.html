@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Catálogo</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/carrito2/carrito2']" style="flex-direction: column; align-items: center;">
+        <ion-icon name="cart-outline" style="margin-top: 4px;"></ion-icon>
+      </ion-button>
+      <ion-button (click)="goToLogin()" style="flex-direction: column; align-items: center;">
+        <ion-icon name="person-outline" style="margin-top: 4px;"></ion-icon>
+      </ion-button>
+      
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+  
+  <ion-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" size-md="4" size-lg="3" *ngFor="let producto of lProductos">
+          <ion-card>
+            <img [src]="producto.Image" alt="{{ producto.nombre }}" />
+            <ion-card-header>
+              <ion-card-title>{{ producto.nombre }}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-text color="primary">
+                <h2>{{ producto.precio}}</h2>
+              </ion-text>
+              <ion-button [routerLink]="['/comprar/comprar']" >Comprar</ion-button>
+              <ion-button [routerLink]="['/detalle']">Detalles del Producto</ion-button>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+  

@@ -1,0 +1,34 @@
+// administracion.page.scss
+
+.button-container {
+  display: flex; /* Habilita flexbox */
+  flex-direction: column; /* Dispone los botones en columna */
+  align-items: center; /* Centra los botones horizontalmente */
+  justify-content: center; /* Centra los botones verticalmente */
+  height: 100%; /* Ocupa el 100% de la altura del contenedor */
+  padding: 20px; /* Espaciado interno */
+  background-color: #f9f9f9; /* Color de fondo claro */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  border-radius: 8px; /* Bordes redondeados */
+}
+
+.animated-button {
+  width: 80%; /* Ajusta el ancho de los botones */
+  margin: 10px 0; /* Espaciado vertical entre botones */
+  font-size: 1.2em; /* Aumenta el tamaño de la fuente */
+  transition: transform 0.2s ease; /* Efecto de transformación al pasar el mouse */
+  
+  &:hover {
+    transform: translateY(-3px); /* Eleva el botón al pasar el mouse */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al hover */
+  }
+}
+
+.page-transition {
+  transition: opacity 0.5s ease-in-out;
+  opacity: 0;
+
+  &.ion-page-in {
+    opacity: 1;
+  }
+}

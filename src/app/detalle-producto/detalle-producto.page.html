@@ -1,0 +1,128 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Detalles del libro</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="libro">
+    <ion-card-header>
+      <ion-card-title>{{ libro.nombre }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <div class="image-container" (click)="toggleImage()">
+        <div class="image-wrapper" [class.flip]="imageFlipped">
+          <img [src]="libro.imagen" alt="Imagen del libro" />
+          <div *ngIf="imageFlipped" class="qr-code">
+            <img [src]="codigoQR" alt="Código QR" />
+          </div>
+        </div>
+        <div class="rating-circle">{{ promedioCalificacion() | number:'1.1-1' }}</div>
+      </div>
+      <ion-item>
+        <ion-label>
+          <h2>Descripción:</h2>
+          <p>{{ libro.descripcion }}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <h2>Precio:</h2>
+          <p>${{ (libro.precio).toFixed(3) }}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <h2>Cantidad:</h2>
+          <p>{{ libro.cantidad }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-item *ngIf="!libro">
+    <ion-label>
+      <h2>Cargando...</h2>
+    </ion-label>
+  </ion-item>
+
+  <ion-card *ngIf="libro">
+    <ion-card-header>
+      <ion-card-title>Reseñas:</ion-card-title>
+      <ion-card-subtitle>
+        Promedio de calificaciones: {{ promedioCalificacion() | number:'1.1-1' }} estrellas
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <div *ngIf="resenas.length > 0; else noResenas">
+        <div *ngFor="let resena of resenas" class="resena-container">
+          <ion-item>
+            <ion-label>
+              <p *ngIf="!resena.editando">{{ resena.comentario }}</p>
+              <ion-textarea *ngIf="resena.editando" [(ngModel)]="resena.comentario"></ion-textarea>
+
+              <div *ngIf="resena.editando" class="estrellas">
+                <ion-icon 
+                  *ngFor="let star of [1, 2, 3, 4, 5]; let i = index" 
+                  name="star" 
+                  [color]="i < resena.calificacion ? 'warning' : 'medium'"
+                  (click)="resena.calificacion = i + 1; actualizarResena(resena)" 
+                  style="cursor: pointer;">
+                </ion-icon>
+              </div>
+
+              <p *ngIf="!resena.editando" class="calificacion">{{ resena.calificacion }} estrella(s)</p>
+              <div class="acciones">
+                <ion-button *ngIf="!resena.editando && isAuthenticated" (click)="editarResena(resena)" fill="clear">Editar</ion-button>
+                <ion-button *ngIf="!resena.editando && isAuthenticated" (click)="borrarResena(resena.id)" fill="clear" color="danger">Eliminar</ion-button>
+                <ion-button *ngIf="resena.editando" (click)="actualizarResena(resena)" fill="clear">Guardar</ion-button>
+                <ion-button *ngIf="resena.editando" (click)="cancelarEdicion(resena)" fill="clear" color="medium">Cancelar</ion-button>
+              </div>
+            </ion-label>
+          </ion-item>
+        </div>
+      </div>
+      <ng-template #noResenas>
+        <p>No hay reseñas aún.</p>
+      </ng-template>
+    </ion-card-content>
+
+    <ion-button expand="full" (click)="abrirModal()">Agregar Reseña</ion-button>
+  </ion-card>
+
+  <ion-modal [isOpen]="modalOpen" (ionModalDidClose)="cerrarModal()">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Agregar Nueva Reseña</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="cerrarModal()">Cerrar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-item>
+          <ion-label position="stacked">Comentario:</ion-label>
+          <ion-textarea [(ngModel)]="nuevaResena.comentario"></ion-textarea>
+        </ion-item>
+        <div class="estrellas">
+          <ion-icon 
+            *ngFor="let star of [1, 2, 3, 4, 5]; let i = index" 
+            name="star" 
+            [color]="i < nuevaResena.calificacion ? 'warning' : 'medium'"
+            (click)="calificar(i + 1)" 
+            style="cursor: pointer;">
+          </ion-icon>
+        </div>
+        <ion-button expand="full" (click)="agregarResena()">Agregar Reseña</ion-button>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>

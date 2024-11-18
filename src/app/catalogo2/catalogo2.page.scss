@@ -1,0 +1,100 @@
+ion-header {
+  --background: rgba(255, 255, 255, 0.8); /* Fondo blanco con 80% de opacidad */
+  backdrop-filter: blur(10px); /* Opción: efecto de desenfoque de fondo */
+}
+
+.catalog-content {
+  --background: #f9f9f9;
+  padding: 15px;
+}
+
+.book-card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.book-title {
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.book-image {
+  width: 100%;
+  height: auto;
+  max-height: 200px; /* Ajusta la altura máxima */
+  object-fit: contain; /* Asegura que la imagen no se corte */
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  margin-bottom: 10px; /* Da espacio entre la imagen y el contenido */
+}
+
+.book-quantity {
+  font-size: 1rem;
+  color: #666;
+  margin: 10px 0;
+}
+
+.book-button {
+  margin-top: 10px;
+  --border-radius: 8px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.book-button:hover {
+  background-color: #3880ff;
+  color: #fff;
+}
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 200px; /* Ajusta según sea necesario */
+}
+
+.carousel {
+  display: flex;
+  animation: slide 10s infinite; /* Cambia la duración según sea necesario */
+}
+
+@keyframes slide {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(0); } /* Mantiene la primera imagen */
+  30% { transform: translateX(-100%); } /* Desliza a la segunda imagen */
+  75% { transform: translateX(-100%); } /* Mantiene la segunda imagen */
+  80% { transform: translateX(0); } /* Regresa a la primera imagen */
+  100% { transform: translateX(0); } /* Finaliza en la primera imagen */
+}
+
+.carousel-image {
+  min-width: 100%; /* Ocupa todo el ancho del contenedor */
+  height: auto; /* Mantiene la relación de aspecto de la imagen */
+}
+.book-card {
+  padding: 16px;
+  text-align: center; /* Centra el contenido del card */
+}
+
+.book-price {
+  font-size: 1.2em; /* Aumenta el tamaño de la fuente */
+  color: #000000; /* Cambia el color a un azul que combine con el tema */
+  margin-top: 8px; /* Espaciado entre el título y el precio */
+  font-weight: bold; /* Añade un poco de negrita para destacar el precio */
+}
+
+.book-title {
+  font-size: 1.4em; /* Tamaño del título */
+  font-weight: bold; /* Negrita para el título */
+}
+

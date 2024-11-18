@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Añadir Producto</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="productForm" (ngSubmit)="onFormSubmit()">
+    <ion-item>
+      <ion-label position="floating">Nombre del Producto</ion-label>
+      <ion-input formControlName="prod_name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Descripción del Producto</ion-label>
+      <ion-textarea formControlName="prod_desc"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Género del libro</ion-label>
+      <ion-textarea formControlName="prod_cate"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Precio</ion-label>
+      <ion-input type="number" formControlName="prod_price"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Cantidad</ion-label>
+      <ion-input type="number" formControlName="prod_cantidad"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">URL de la Imagen (opcional)</ion-label>
+      <ion-input formControlName="prod_image_url"></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Subir imagen</ion-label>
+      <ion-button expand="block" color="primary" (click)="fileInput.click()">
+        <ion-icon slot="start" name="cloud-upload-outline"></ion-icon>
+        Seleccionar archivo
+      </ion-button>
+      <input type="file" #fileInput (change)="onFileSelected($event)" accept="image/*" hidden>
+    </ion-item>
+
+    <!-- Vista previa de la imagen -->
+    <ion-item *ngIf="imagePreviewUrl">
+      <ion-label>Vista previa:</ion-label>
+      <img 
+        [src]="imagePreviewUrl" 
+        alt="Vista previa de la imagen" 
+        (click)="openImageModal()" 
+        style="width: 100px; height: auto; margin-left: 10px; cursor: pointer;" />
+      <!-- Llama al método para abrir el modal -->
+    </ion-item>
+    
+    
+    <ion-button expand="full" type="submit">Agregar Producto</ion-button>
+  </form>
+</ion-content>
